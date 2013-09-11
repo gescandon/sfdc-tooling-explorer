@@ -29,7 +29,7 @@ public class SFDCToolingServlet extends HttpServlet {
       String result = "no results";
       GetMethod get = new GetMethod(endpoint);
       
-      String sessionId = "XXX";
+      String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
       get.setRequestHeader("Authorization", "Bearer " + sessionId);
       get.setRequestHeader("Content-Type", "application/json");
       
