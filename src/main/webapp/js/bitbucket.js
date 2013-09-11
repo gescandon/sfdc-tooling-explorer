@@ -1,6 +1,4 @@
 Bitbucket = {
-  usr:'gjescandon@gmail.com',
-  pwd:'sandyPants',
   repo:'openjava1'
 };
 
