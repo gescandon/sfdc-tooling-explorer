@@ -3,6 +3,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.*;
+import org.eclipse.jetty.webapp.WebAppContext;
 
 public class Hello extends HttpServlet {
 
@@ -17,7 +18,16 @@ public class Hello extends HttpServlet {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
-        context.addServlet(new ServletHolder(new Hello()),"/*");
+        //context.addServlet(new ServletHolder(new Hello()),"/*");
+        WebAppContext root = new WebAppContext();
+
+        root.setContextPath("/");
+        String webappDirLocation = "src/main/webapp/";
+        root.setDescriptor(webappDirLocation+"/WEB-INF/web.xml");
+        root.setResourceBase(webappDirLocation);
+        root.setParentLoaderPriority(true);
+
+        server.setHandler(root);
         server.start();
         server.join();   
     }
