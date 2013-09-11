@@ -1,3 +1,3 @@
-## Blank Heroku app
+# Cloud Deployer
 
-This is a empty Heroku application template. You can add files to this application once you have cloned it.
+This is a hack to automate the commit of SFDC metadata into a git repository.
