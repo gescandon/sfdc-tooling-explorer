@@ -48,7 +48,7 @@ public class SFDCToolingServlet extends HttpServlet {
                 throw new ServletException(e);
             }
             */
-            result = "sessionID: " + sessionId + get.getResponseBodyAsString();
+            result = get.getResponseBodyAsString();
         } catch (HttpException e) {
             e.printStackTrace();
             throw new ServletException(e);
