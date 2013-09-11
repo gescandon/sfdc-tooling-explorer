@@ -32,7 +32,7 @@
       </init-param>      
       <init-param>
           <param-name>redirectUri</param-name>
-          <param-value>https://warm-brushlands-4210.herokuapp.com/</param-value>
+          <param-value>https://warm-brushlands-4210.herokuapp.com/sfdc_callback</param-value>
       </init-param>
       <init-param>
           <param-name>environment</param-name>
@@ -47,6 +47,10 @@
   <servlet-mapping>
     <servlet-name>oauthorize</servlet-name>
     <url-pattern>/oauth</url-pattern>
+  </servlet-mapping> 
+  <servlet-mapping>
+    <servlet-name>oauthorize</servlet-name>
+    <url-pattern>/sfdc_callback</url-pattern>
   </servlet-mapping> 
   <servlet-mapping>
     <servlet-name>tooling</servlet-name>
