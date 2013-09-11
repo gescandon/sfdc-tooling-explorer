@@ -14,10 +14,43 @@
   <servlet>
       <servlet-name>bitbucket</servlet-name>
       <servlet-class>com.appirio.BitbucketServlet</servlet-class>
-      </servlet>    
+  </servlet>    
+  <servlet>
+      <servlet-name>tooling</servlet-name>
+      <servlet-class>com.appirio.SFDCToolingServlet</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>oauthorize</servlet-name>
+      <servlet-class>com.appirio.OAuthServlet</servlet-class>
+      <init-param>
+          <param-name>clientId</param-name>
+          <param-value>3MVG9QDx8IX8nP5ST8OqwDJxVuQ015dCJUBZzYHKeBeq4oWgp8wpiRVVqML6zcDJc0YmmS3KcAmwroiJOPXft</param-value>
+      </init-param>
+      <init-param>
+          <param-name>clientSecret</param-name>
+          <param-value>4286876991829178467</param-value>
+      </init-param>      
+      <init-param>
+          <param-name>redirectUri</param-name>
+          <param-value>https://warm-brushlands-4210.herokuapp.com/</param-value>
+      </init-param>
+      <init-param>
+          <param-name>environment</param-name>
+          <param-value>https://na12.salesforce.com</param-value>
+      </init-param>      
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>bitbucket</servlet-name>
     <url-pattern>/bitbucket</url-pattern>
   </servlet-mapping> 
-
+  <servlet-mapping>
+    <servlet-name>oauthorize</servlet-name>
+    <url-pattern>/oauth</url-pattern>
+  </servlet-mapping> 
+  <servlet-mapping>
+    <servlet-name>tooling</servlet-name>
+    <url-pattern>/tooling</url-pattern>
+  </servlet-mapping> 
+  
 </web-app>
