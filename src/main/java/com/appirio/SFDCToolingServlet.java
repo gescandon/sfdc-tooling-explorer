@@ -26,7 +26,7 @@ public class SFDCToolingServlet extends HttpServlet {
 
       HttpClient httpclient = new HttpClient();
       
-      JSONObject result;
+      String result = "no results";
       GetMethod get = new GetMethod(endpoint);
       
       String sessionId = "XXX";
@@ -36,6 +36,7 @@ public class SFDCToolingServlet extends HttpServlet {
 
         try {
             httpclient.executeMethod(get);
+            /*
             try {
                  result = new JSONObject("{result:nothing}");
                  result = new JSONObject(
@@ -46,6 +47,8 @@ public class SFDCToolingServlet extends HttpServlet {
                 e.printStackTrace();
                 throw new ServletException(e);
             }
+            */
+            result = get.getResponseBodyAsString();
         } catch (HttpException e) {
             e.printStackTrace();
             throw new ServletException(e);
