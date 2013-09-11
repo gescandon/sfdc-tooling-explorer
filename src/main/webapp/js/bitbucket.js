@@ -1,12 +1,13 @@
 Bitbucket = {
   usr:'gjescandon@gmail.com',
   pwd:'sandyPants',
-  url:'https://bitbucket.org/api/1.0/repositories/gescandon/openjava1/'
+  repo:'openjava1'
 };
 
+var bbServlet = "/bitbucket?url=" + Bitbucket.repo
 $( document ).ready(function() {
-	$.get( Bitbucket.url, function( response ) {
-	    console.log( response ); // server response
+	$.get( bbServlet, function( response ) {
+	    $("#bitbucket").html( response ); // server response
 	});
     console.log( "ready!" );
 });

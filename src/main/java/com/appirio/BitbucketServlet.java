@@ -14,23 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.Cookie;
 
 
 public class BitbucketServlet extends HttpServlet {
+	String bburl;
     public void init() throws ServletException {
+    	bburl = "https://bitbucket.org/api/1.0/repositories/gescandon/";
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //response.sendRedirect(request.getContextPath() + "/index.html");
     	HttpClient httpclient = new HttpClient();
     	JSONObject result;
-        GetMethod get = new GetMethod((String)request.getParameter("url"));
+    	String url = bburl + request.getParameter("url");
+        GetMethod get = new GetMethod(url);
 
         try {
             httpclient.executeMethod(get);

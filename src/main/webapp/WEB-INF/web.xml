@@ -5,9 +5,19 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     version="2.5">
 
+    <display-name>Cloud Deployer</display-name>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-
+    
+  <servlet>
+      <servlet-name>bitbucket</servlet-name>
+      <servlet-class>com.appirio.BitbucketServlet</servlet-class>
+      </servlet>    
+  <servlet-mapping>
+    <servlet-name>bitbucket</servlet-name>
+    <url-pattern>/bitbucket</url-pattern>
+  </servlet-mapping> 
 
 </web-app>
