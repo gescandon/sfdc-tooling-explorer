@@ -1,7 +1,6 @@
 var isMock = false;
 if (window.location.hostname.indexOf('localhost') > -1) {
   isMock = true;
-  alert("is Mock!");
 }
 
 function map(fn, a)
@@ -22,6 +21,11 @@ function reduce(fn, a, init)
     }
 
 function toolingResp(response) {
+  if (isMock) {
+    // replace response with mock data
+	$("#mock-response").html("Mock response: " + response);
+    response = toolingAll;
+  }	
   if ($("#tooling").length > 0) {
     $("#tooling").html( response );
   }
@@ -39,28 +43,21 @@ function getMenu(response) {
 }
 
 function getTooling(url) {
-	var tools = fakeTools;
-	if (!isMock) {
 	$.get( "/tooling?url=" + url, function( response ) {
-		  tools = response;
+		if (isMock) {
+		     // replace response with mock data
+		      $("#mock-response").html("Mock response: " + response);
+		      response = mockTools;
+		    }	
+			toolingResp(response);
 		});
-    }
-	toolingResp(tools);
 }
 
 $( document ).ready(function() {
 	$.get( "/oauth", function( response ) {
 	    console.log( response ); // server response
 	});
-
-	var tools = toolingAll;
-	alert(window.location.hostname);
-	if (!isMock) {
-	  $.get( "/tooling", function( response ) {
-		alert("not Mock!");
-	    tools = response;
-	  });
-	}
-	toolingResp(tools);
-	
+    $.get( "/tooling", function( response ) {
+      toolingResp(response);
+	});	
 });
