@@ -48,10 +48,11 @@ $( document ).ready(function() {
 	});
 
 	var tools = toolingAll;
+	alert(window.location.hostname);
 	if (window.location.hostname != 'localhost') {
-	$.get( "/tooling", function( response ) {
-	  tools = response;
-	});
+	  $.get( "/tooling", function( response ) {
+	    tools = response;
+	  });
 	}
 	toolingResp(tools);
 	
