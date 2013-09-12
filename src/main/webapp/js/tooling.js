@@ -1,3 +1,9 @@
+var isMock = false;
+if (window.location.hostname.indexOf('localhost') > -1) {
+  isMock = true;
+  alert("is Mock!");
+}
+
 function map(fn, a)
     {
         for (i = 0; i < a.length; i++)
@@ -34,7 +40,7 @@ function getMenu(response) {
 
 function getTooling(url) {
 	var tools = fakeTools;
-	if (window.location.hostname.indexOf('localhost') == -1) {
+	if (!isMock) {
 	$.get( "/tooling?url=" + url, function( response ) {
 		  tools = response;
 		});
@@ -49,8 +55,9 @@ $( document ).ready(function() {
 
 	var tools = toolingAll;
 	alert(window.location.hostname);
-	if (window.location.hostname.indexOf('localhost') == -1) {
+	if (!isMock) {
 	  $.get( "/tooling", function( response ) {
+		alert("not Mock!");
 	    tools = response;
 	  });
 	}
