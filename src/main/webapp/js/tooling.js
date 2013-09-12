@@ -34,7 +34,7 @@ function getMenu(response) {
 
 function getTooling(url) {
 	var tools = fakeTools;
-	if (window.location.hostname != 'localhost') {
+	if (window.location.hostname.indexOf('localhost') == -1) {
 	$.get( "/tooling?url=" + url, function( response ) {
 		  tools = response;
 		});
@@ -49,7 +49,7 @@ $( document ).ready(function() {
 
 	var tools = toolingAll;
 	alert(window.location.hostname);
-	if (window.location.hostname != 'localhost') {
+	if (window.location.hostname.indexOf('localhost') == -1) {
 	  $.get( "/tooling", function( response ) {
 	    tools = response;
 	  });
