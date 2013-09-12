@@ -37,8 +37,12 @@ $( document ).ready(function() {
 	    console.log( response ); // server response
 	});
 
+	var tools = toolingAll;
+	if (window.location.hostname != 'localhost') {
 	$.get( "/tooling", function( response ) {
-	    toolingResp(toolingAll);
+	  tools = response;
 	});
+	}
+	toolingResp(tools);
 	
 });
