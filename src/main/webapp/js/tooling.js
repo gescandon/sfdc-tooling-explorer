@@ -20,15 +20,16 @@ function toolingResp(response) {
     $("#tooling").html( response );
   }
   if ($("#tooling-menu").length > 0) {
-	    $("#tooling-menu").html(getMenu(response) );
+	    $("#tooling-menu").html(getMenu(response));
 	  }
 }
 
 function getMenu(response) {
   var rObj = $.parseJSON(response);
   var menu = rObj.sobjects;
-  return reduce (function(x){
-    return "<li>" + x.name  + "</li>";}, menu, "<ul>") + "</ul>";
+  
+  return reduce (function(s, x){
+    return s + "<li><a href=\"" + x.urls.sobject + "\">" + x.name  + "</a>: " + x.urls.sobject + "</li>";}, menu, "<ul>") + "</ul>";
 }
 
 $( document ).ready(function() {
@@ -37,6 +38,7 @@ $( document ).ready(function() {
 	});
 
 	$.get( "/tooling", function( response ) {
-	    toolingResp(response);
+	    toolingResp(toolingAll);
 	});
+	
 });
