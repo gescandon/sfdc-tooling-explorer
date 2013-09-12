@@ -33,11 +33,13 @@ function getMenu(response) {
 }
 
 function getTooling(url) {
+	var tools = fakeTools;
+	if (window.location.hostname != 'localhost') {
 	$.get( "/tooling?url=" + url, function( response ) {
 		  tools = response;
 		});
-		}
-		toolingResp(tools);
+    }
+	toolingResp(tools);
 }
 
 $( document ).ready(function() {
