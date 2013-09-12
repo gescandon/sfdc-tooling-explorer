@@ -1,3 +1,8 @@
 .section {
   margin: 10px;
 }
+
+.mock-response {
+  padding: 10px;
+  background-color: yellow;
+}

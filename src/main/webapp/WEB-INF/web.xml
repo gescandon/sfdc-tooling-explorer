@@ -16,6 +16,10 @@
       <servlet-class>com.appirio.BitbucketServlet</servlet-class>
   </servlet>    
   <servlet>
+      <servlet-name>pullrequest</servlet-name>
+      <servlet-class>com.appirio.PullRequestServlet</servlet-class>
+  </servlet>
+  <servlet>
       <servlet-name>tooling</servlet-name>
       <servlet-class>com.appirio.SFDCToolingServlet</servlet-class>
   </servlet>
@@ -51,6 +55,10 @@
   <servlet-mapping>
     <servlet-name>oauthorize</servlet-name>
     <url-pattern>/sfdc_callback</url-pattern>
+  </servlet-mapping> 
+  <servlet-mapping>
+    <servlet-name>pullrequest</servlet-name>
+    <url-pattern>/pullrequest</url-pattern>
   </servlet-mapping> 
   <servlet-mapping>
     <servlet-name>tooling</servlet-name>

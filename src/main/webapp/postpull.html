@@ -4,18 +4,23 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="/js/sfdcMock.js"></script>
-  <script src="/js/tooling.js"></script>
   <link rel="stylesheet" type="text/css" href="css/cd.css">
+<script>
+
+var pdata = "You are my sunshine.";
+$( document ).ready(function() {
+    $.post( "/pullrequest", pdata, function( response ) {
+        $("#post-response").html(response);
+    });
+
+});
+</script>
 </head>
 <body>
 <div id="title" class="section">
-Cloud Deployer Tooling - <a href="/oauth">re-oauth</a>
+Cloud Deployer Tooling - PostMock
 </div>
 
-<div id="tooling-menu" class="section">Tooling Menu here</div>
-
-<div id="tooling" class="section">Raw Tooling here</div>
-
-<div id="mock-response" class="section"></div>
+<div id="post-response" class="section"></div>
 
 </body></html>
