@@ -28,6 +28,7 @@ public class PullRequestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	System.out.println("### pullrequest POST ###");
     	StringBuilder sb = new StringBuilder();
+    	sb.append("Thanks for your message: ");
         try {
             BufferedReader reader = req.getReader();
             reader.mark(10000);
@@ -47,6 +48,8 @@ public class PullRequestServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println(sb);
         out.close();
+        System.out.println("sb");
+    	
     }
     
 }
