@@ -29,7 +29,15 @@ function getMenu(response) {
   var menu = rObj.sobjects;
   
   return reduce (function(s, x){
-    return s + "<li><a href=\"" + x.urls.sobject + "\">" + x.name  + "</a>: " + x.urls.sobject + "</li>";}, menu, "<ul>") + "</ul>";
+    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.urls.sobject + "\')\">" + x.name  + "</div>: " + x.urls.sobject + "</li>";}, menu, "<ul>") + "</ul>";
+}
+
+function getTooling(url) {
+	$.get( "/tooling?url=" + url, function( response ) {
+		  tools = response;
+		});
+		}
+		toolingResp(tools);
 }
 
 $( document ).ready(function() {

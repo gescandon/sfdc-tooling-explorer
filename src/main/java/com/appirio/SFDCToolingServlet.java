@@ -27,7 +27,8 @@ public class SFDCToolingServlet extends HttpServlet {
       HttpClient httpclient = new HttpClient();
       
       String result = "no results";
-      GetMethod get = new GetMethod(endpoint);
+      String qryUrl = request.getParameter("url"); 
+      GetMethod get = new GetMethod(qryUrl == null ? endpoint : qryUrl);
       
       String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
       get.setRequestHeader("Authorization", "Bearer " + sessionId);
