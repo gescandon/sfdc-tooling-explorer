@@ -124,7 +124,7 @@ public class OAuthServlet extends HttpServlet {
 
                         // Instance URL is Salesforce specific.
                         instanceUrl = authResponse.getString("instance_url");
-                        result += ": Got access token: " + accessToken;
+                        result += ": Got access token";
                         //System.out.println(result);
                     } catch (JSONException e) {
                         e.printStackTrace();
