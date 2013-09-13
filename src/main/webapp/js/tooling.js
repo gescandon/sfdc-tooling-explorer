@@ -66,7 +66,7 @@ function loadTools(response, objectName) {
 function getTooling(objectName,recordName) {
 	
 	var url = '/tooling?objectName=' + objectName;
-	url += recordName == null ? null : '&recordName=' + recordName
+	url += recordName == null ? '' : '&recordName=' + recordName
 	alert('tooling url: ' + url);
 	$.get( url, function( response ) {
 		if (isMock) {
