@@ -24,7 +24,7 @@ public class SFDCToolingManager {
 	    }
 	    
 	    public static String explore(String explorePath, String sessionId) throws ServletException, IOException{
-	    	String query = hostname + "/explorePath";
+	    	String query = hostname + "/" + explorePath;
 	        HttpClient httpclient = new HttpClient();
 	        GetMethod get = new GetMethod(query);
 	        
