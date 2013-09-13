@@ -30,7 +30,7 @@ public class SFDCToolingServlet extends HttpServlet {
     	System.out.println(objectName + " " + recordName);
     	String objectQuery = "Select+id,Name+from+";
         String query = objectName == null ? "" : objectQuery + objectName;
-        query += recordName == null ? "" : "+where+Name+=+" + recordName;
+        query += recordName == null ? "" : "+where+Name+=+'" + recordName + "'";
         query = endpoint + ("".equals(query) ? "/sobjects": "/query?q=" + query);
         System.out.println(query);
         return query;
