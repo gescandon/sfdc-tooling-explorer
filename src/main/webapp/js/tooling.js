@@ -56,7 +56,6 @@ function loadMenu(response) {
 	}
 
 function loadTools(response, objectName) {
-	  alert(response);
 	  var rObj = $.parseJSON(response);
 	  var records = rObj.records;
 	  return reduce (function(s, x){
@@ -67,7 +66,6 @@ function getTooling(objectName,recordName) {
 	
 	var url = '/tooling?objectName=' + objectName;
 	url += recordName == null ? '' : '&recordName=' + recordName
-	alert('tooling url: ' + url);
 	$.get( url, function( response ) {
 		if (isMock) {
 		     // replace response with mock data
@@ -80,6 +78,7 @@ function getTooling(objectName,recordName) {
 
 function explore() {
     var explorePath = $('#tool-path').val();
+    
 	$.get( '/tooling?explorePath=' + explorePath, function( response ) {
 		if (isMock) {
 		     // replace response with mock data
