@@ -26,15 +26,22 @@ public class SFDCToolingServlet extends HttpServlet {
       
     }
 
+    public String getQuery(String objectName) {
+    	String objectQuery = "Select+id,Name+from+";
+        String query = objectName == null ? null : objectQuery + objectName;
+        query = endpoint + (query == null ? "/sobjects": "/query?q=" + query);
+        System.out.println(query);
+        return query;
+    }
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
       HttpClient httpclient = new HttpClient();
       
       String result = "no results";
       String objectName = request.getParameter("objectName");
-      String objectQuery = "Select id,Name+from ";
-      String query = objectName == null ? null : objectQuery + objectName;
-      GetMethod get = new GetMethod(endpoint + (query == null ? "/sobjects": "/query?q=" + URLEncoder.encode(query, "UTF-8")));
+      String query = getQuery(objectName);
+      GetMethod get = new GetMethod(query);
       
       String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
       get.setRequestHeader("Authorization", "Bearer " + sessionId);

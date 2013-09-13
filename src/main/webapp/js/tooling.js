@@ -21,25 +21,30 @@ function reduce(fn, a, init)
     }
 
 function toolingResp(response, objectName) {
-	alert(objectName);
   if (isMock) {
     // replace response with mock data
 	$("#mock-response").html("Mock response: " + response);
-    response = toolingAll;
+    response = mockTools;
+
+    if (objectName == null) {
+        response = toolingAll;    	
+    }
   }	
   if ($("#tooling").length > 0) {
     $("#tooling").html( response );
   }
 
   $("#tooling-menu").html('');
-	  if ($("#tooling-menu").length > 0) {
-	    $("#tooling-menu").html(getMenu(response));
-	  }	  
+  var result = 'No result';
+  if (objectName == null) {
+	  result = getMenu(response);
   } else {
-	  if ($("#tooling-menu").length > 0) {
-		    $("#tooling-menu").html(getTools(response));
-	  }	 
+	  result = getTools(response);
   }
+  if ($("#tooling-menu").length > 0) {
+	    $("#tooling-menu").html(result);
+}	 
+  
 }
 
 function getMenu(response) {
@@ -51,16 +56,16 @@ function getMenu(response) {
 	}
 
 function getTools(response, objectName) {
+	  alert(response);
 	  var rObj = $.parseJSON(response);
 	  var records = rObj.records;
-	  
 	  return reduce (function(s, x){
 	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
 	}
 
 function getTooling(objectName) {
 	
-	var url = '/tooling?objectName =' + objectName;
+	var url = '/tooling?objectName=' + objectName;
 	alert('tooling url: ' + url);
 	$.get( url, function( response ) {
 		if (isMock) {
