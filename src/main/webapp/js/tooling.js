@@ -60,7 +60,7 @@ function loadTools(response, objectName) {
 	  var rObj = $.parseJSON(response);
 	  var records = rObj.records;
 	  return reduce (function(s, x){
-	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.type + "\',\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
+	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.attributes.type + "\',\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
 	}
 
 function getTooling(objectName,recordName) {
