@@ -78,11 +78,14 @@ function getTooling(objectName,recordName) {
 		});
 }
 
-$( document ).ready(function() {
-	$.get( "/oauth", function( response ) {
-	    console.log( response ); // server response
-	});
-    $.get( "/tooling", function( response ) {
-      toolingResp(response);
-	});	
-});
+function explore() {
+    var explorePath = $('#tool-path').val();
+	$.get( '/tooling?explorePath=' + explorePath, function( response ) {
+		if (isMock) {
+		     // replace response with mock data
+		      $("#mock-response").html("Mock response: " + response);
+		      response = mockTools;
+		    }	
+			$("#explore-out").html(response);
+		});
+}

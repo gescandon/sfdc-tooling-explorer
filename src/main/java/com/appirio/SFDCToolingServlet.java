@@ -17,54 +17,24 @@ import java.net.URLEncoder;
 
 
 public class SFDCToolingServlet extends HttpServlet {
-  
-	String endpoint;
-	String hostname;
-    public void init() throws ServletException {
-      hostname = "https://na12.salesforce.com";
-      endpoint = hostname + "/services/data/v28.0/tooling";
-      
-    }
-
-    public String getQuery(String objectName, String recordName) {
-    	System.out.println(objectName + " " + recordName);
-    	String objectQuery = "Select+id,Name+from+";
-        String query = objectName == null ? "" : objectQuery + objectName;
-        query += recordName == null ? "" : "+where+Name+=+'" + recordName + "'";
-        query = endpoint + ("".equals(query) ? "/sobjects": "/query?q=" + query);
-        System.out.println(query);
-        return query;
-    }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-      HttpClient httpclient = new HttpClient();
+    String objectName = request.getParameter("objectName");
+    String recordName = request.getParameter("recordName");
+    String explorePath = request.getParameter("explorePath");
+    String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
+     
       
       String result = "no results";
-      String objectName = request.getParameter("objectName");
-      String recordName = request.getParameter("recordName");
-      String query = getQuery(objectName, recordName);
-      GetMethod get = new GetMethod(query);
-      
-      String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
-      get.setRequestHeader("Authorization", "Bearer " + sessionId);
-      get.setRequestHeader("Content-Type", "application/json");
-      
-
-        try {
-            httpclient.executeMethod(get);
-            result = get.getResponseBodyAsString();
-        } catch (HttpException e) {
-            e.printStackTrace();
-            throw new ServletException(e);
-        }
-        finally {
-            get.releaseConnection();
-        }
-        
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println(result);
-        out.close();
+      if (explorePath != null) {
+          result = SFDCToolingManager.explore(explorePath, sessionId);
+    	  
+      } else {
+        result = SFDCToolingManager.getTooling(objectName, recordName, sessionId);
+      }
+      response.setContentType("text/html");
+      PrintWriter out = response.getWriter();
+      out.println(result);
+      out.close();
     }
 }
