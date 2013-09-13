@@ -86,6 +86,6 @@ function explore() {
 		      $("#mock-response").html("Mock response: " + response);
 		      response = mockTools;
 		    }	
-			$("#explore-out").html(response);
+			$("#explore-out").html(JSON.stringify(response, null, " "););
 		});
 }
