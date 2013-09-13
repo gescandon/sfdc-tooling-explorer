@@ -149,6 +149,6 @@ public class OAuthServlet extends HttpServlet {
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println(result + ": Authorized<p><a href=\"/\">HOME</a></p> - <a href=\"/tooling.html\">TOOLING</a></p>");
+        out.println(result + ": Authorized<p><a href=\"/\">HOME</a> - <a href=\"/tooling.html\">TOOLING</a></p>");
         out.close();    }
 }
