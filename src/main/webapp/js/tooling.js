@@ -20,7 +20,8 @@ function reduce(fn, a, init)
         return s;
     }
 
-function toolingResp(response) {
+function toolingResp(response, objectName) {
+	alert(objectName);
   if (isMock) {
     // replace response with mock data
 	$("#mock-response").html("Mock response: " + response);
@@ -29,9 +30,14 @@ function toolingResp(response) {
   if ($("#tooling").length > 0) {
     $("#tooling").html( response );
   }
-  if ($("#tooling-menu").length > 0) {
+
+  if (objectName == null) {
+	  if ($("#tooling-menu").length > 0) {
 	    $("#tooling-menu").html(getMenu(response));
 	  }
+  } else {
+	  $("#tooling-menu").html('');
+  }
 }
 
 function getMenu(response) {
@@ -39,17 +45,20 @@ function getMenu(response) {
   var menu = rObj.sobjects;
   
   return reduce (function(s, x){
-    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.urls.sobject + "\')\">" + x.name  + "</div>: " + x.urls.sobject + "</li>";}, menu, "<ul>") + "</ul>";
+    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.name + "\')\">" + x.name  + "</div></li>";}, menu, "<ul>") + "</ul>";
 }
 
-function getTooling(url) {
-	$.get( "/tooling?url=" + url, function( response ) {
+function getTooling(objectName) {
+	
+	var url = '/tooling?query=Select+id,Name+from+' + objectName;
+	alert('tooling url: ' + url);
+	$.get( url, function( response ) {
 		if (isMock) {
 		     // replace response with mock data
 		      $("#mock-response").html("Mock response: " + response);
 		      response = mockTools;
 		    }	
-			toolingResp(response);
+			toolingResp(response, objectName);
 		});
 }
 

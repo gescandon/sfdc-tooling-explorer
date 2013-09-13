@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 
 public class SFDCToolingServlet extends HttpServlet {
@@ -20,9 +21,9 @@ public class SFDCToolingServlet extends HttpServlet {
 	String endpoint;
 	String hostname;
     public void init() throws ServletException {
-      endpoint = "/services/data/v28.0/tooling/sobjects/";
       hostname = "https://na12.salesforce.com";
-
+      endpoint = hostname + "/services/data/v28.0/tooling";
+      
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,8 +31,10 @@ public class SFDCToolingServlet extends HttpServlet {
       HttpClient httpclient = new HttpClient();
       
       String result = "no results";
-      String qryUrl = request.getParameter("url");
-      GetMethod get = new GetMethod(hostname + (qryUrl == null ? endpoint : qryUrl));
+      String query = request.getParameter("query");
+
+      
+      GetMethod get = new GetMethod(endpoint + (query == null ? "/sobjects": "/query?q=" + URLEncoder.encode(query, "UTF-8")));
       
       String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
       get.setRequestHeader("Authorization", "Bearer " + sessionId);
