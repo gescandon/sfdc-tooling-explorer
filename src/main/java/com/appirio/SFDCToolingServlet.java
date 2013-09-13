@@ -26,9 +26,10 @@ public class SFDCToolingServlet extends HttpServlet {
       
     }
 
-    public String getQuery(String objectName) {
+    public String getQuery(String objectName, String recordName) {
     	String objectQuery = "Select+id,Name+from+";
         String query = objectName == null ? null : objectQuery + objectName;
+        query += recordName == null ? null : "+where+Name+=+" + recordName;
         query = endpoint + (query == null ? "/sobjects": "/query?q=" + query);
         System.out.println(query);
         return query;
@@ -40,7 +41,8 @@ public class SFDCToolingServlet extends HttpServlet {
       
       String result = "no results";
       String objectName = request.getParameter("objectName");
-      String query = getQuery(objectName);
+      String recordName = request.getParameter("recordName");
+      String query = getQuery(objectName, recordName);
       GetMethod get = new GetMethod(query);
       
       String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
@@ -50,18 +52,6 @@ public class SFDCToolingServlet extends HttpServlet {
 
         try {
             httpclient.executeMethod(get);
-            /*
-            try {
-                 result = new JSONObject("{result:nothing}");
-                 result = new JSONObject(
-                        new JSONTokener(new InputStreamReader(
-                                get.getResponseBodyAsStream())));
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                throw new ServletException(e);
-            }
-            */
             result = get.getResponseBodyAsString();
         } catch (HttpException e) {
             e.printStackTrace();

@@ -37,9 +37,9 @@ function toolingResp(response, objectName) {
   $("#tooling-menu").html('');
   var result = 'No result';
   if (objectName == null) {
-	  result = getMenu(response);
+	  result = loadMenu(response);
   } else {
-	  result = getTools(response);
+	  result = loadTools(response);
   }
   if ($("#tooling-menu").length > 0) {
 	    $("#tooling-menu").html(result);
@@ -47,7 +47,7 @@ function toolingResp(response, objectName) {
   
 }
 
-function getMenu(response) {
+function loadMenu(response) {
 	  var rObj = $.parseJSON(response);
 	  var menu = rObj.sobjects;
 	  
@@ -55,17 +55,18 @@ function getMenu(response) {
 	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.name + "\')\">" + x.name  + "</div></li>";}, menu, "<ul>") + "</ul>";
 	}
 
-function getTools(response, objectName) {
+function loadTools(response, objectName) {
 	  alert(response);
 	  var rObj = $.parseJSON(response);
 	  var records = rObj.records;
 	  return reduce (function(s, x){
-	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
+	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.type + "\',\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
 	}
 
-function getTooling(objectName) {
+function getTooling(objectName,recordName) {
 	
 	var url = '/tooling?objectName=' + objectName;
+	url += recordName == null ? null : '&recordName=' + recordName
 	alert('tooling url: ' + url);
 	$.get( url, function( response ) {
 		if (isMock) {
