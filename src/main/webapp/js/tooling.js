@@ -31,26 +31,36 @@ function toolingResp(response, objectName) {
     $("#tooling").html( response );
   }
 
-  if (objectName == null) {
+  $("#tooling-menu").html('');
 	  if ($("#tooling-menu").length > 0) {
 	    $("#tooling-menu").html(getMenu(response));
-	  }
+	  }	  
   } else {
-	  $("#tooling-menu").html('');
+	  if ($("#tooling-menu").length > 0) {
+		    $("#tooling-menu").html(getTools(response));
+	  }	 
   }
 }
 
 function getMenu(response) {
-  var rObj = $.parseJSON(response);
-  var menu = rObj.sobjects;
-  
-  return reduce (function(s, x){
-    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.name + "\')\">" + x.name  + "</div></li>";}, menu, "<ul>") + "</ul>";
-}
+	  var rObj = $.parseJSON(response);
+	  var menu = rObj.sobjects;
+	  
+	  return reduce (function(s, x){
+	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.name + "\')\">" + x.name  + "</div></li>";}, menu, "<ul>") + "</ul>";
+	}
+
+function getTools(response, objectName) {
+	  var rObj = $.parseJSON(response);
+	  var records = rObj.records;
+	  
+	  return reduce (function(s, x){
+	    return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
+	}
 
 function getTooling(objectName) {
 	
-	var url = '/tooling?query=Select+id,Name+from+' + objectName;
+	var url = '/tooling?objectName =' + objectName;
 	alert('tooling url: ' + url);
 	$.get( url, function( response ) {
 		if (isMock) {

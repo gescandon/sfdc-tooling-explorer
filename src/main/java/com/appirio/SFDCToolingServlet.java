@@ -31,9 +31,9 @@ public class SFDCToolingServlet extends HttpServlet {
       HttpClient httpclient = new HttpClient();
       
       String result = "no results";
-      String query = request.getParameter("query");
-
-      
+      String objectName = request.getParameter("objectName");
+      String objectQuery = "Select id,Name+from ";
+      String query = objectName == null ? null : objectQuery + objectName;
       GetMethod get = new GetMethod(endpoint + (query == null ? "/sobjects": "/query?q=" + URLEncoder.encode(query, "UTF-8")));
       
       String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
