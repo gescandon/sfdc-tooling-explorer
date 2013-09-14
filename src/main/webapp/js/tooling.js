@@ -86,6 +86,43 @@ function explore() {
 		      response = mockTools;
 		    }	
 			$("#explore-out").html(JSON.stringify($.parseJSON(response), null, " "));
-		    icicleInit(response);
+			sendToIcicle($.parseJSON(response));
 		});
 }
+
+function sendToIcicle(jsonr) {
+	var icicle = {
+	  name : jsonr.entityTypeName,
+	  id : 'node0',
+	  data : {
+		  size:jsonr.size}
+	  }
+	
+	var records = jsonr.records;
+	map(function(x) {
+		  var newx = {
+		    id : x.Id,
+		    name : x.Name,
+		    data :{}
+		  };
+		  for (var key in x.attributes) {
+			  if (x.attributes.hasOwnProperty(key)) {
+				  newx.data[key] = x.attributes[key];
+			  }
+			}
+		  return newx;
+	    }, records);
+	icicle.children=records;	  
+	$("#explore-out").html("<PRE>" + JSON.stringify(icicle, null, "  ") + "</PRE>");
+
+	var json = {  
+			  "id": "aUniqueIdentifier",  
+			  "name": "usually a nodes name",  
+			  "data": {  
+			    "some key": "some value",  
+			    "some other key": "some other value"  
+			   }, };
+    icicleInit(icicle);
+};
+	  
+

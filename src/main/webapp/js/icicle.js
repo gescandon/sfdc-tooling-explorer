@@ -34,7 +34,6 @@ function icicleInit(jsonResponse){
 
   // init data
     var json = jsonResponse;
-    alert(JSON.stringify($.parseJSON(jsonResponse)));
   // end
   // init Icicle
   icicle = new $jit.Icicle({
