@@ -31,7 +31,7 @@ function toolingResp(response, objectName) {
     }
   }  
   if ($("#tooling").length > 0) {
-    $("#tooling").html( response );
+    $("#tooling").html("<pre>" + JSON.stringify($.parseJSON( response)) + "</pre>" );
   }
 
   $("#tooling-menu").html('');
