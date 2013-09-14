@@ -93,9 +93,11 @@ function icicleInit(jsonResponse){
             this.onMouseLeave(icicle.events.hovered);
           //perform the enter animation
           icicle.enter(node);
-         if("description" in data) {
-              html += "<br /><br /><b>Data Desc:</b><br /><pre>" + data.description + "</pre>";
+         for(key in data) {
+              html += "<br /><br /><b>" + key + ":</b>" + data[key] + "</br>";
             }
+         $jit.id('inner-details').innerHTML = html;
+         
         }
       },
       onRightClick: function(){
