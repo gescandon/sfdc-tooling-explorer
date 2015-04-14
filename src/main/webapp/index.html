@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/js/sfdcMock.js"></script>
+  <script src="/js/tooling.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/cd.css">
+  <script>
+  
+  $( document ).ready(function() {
+    $.get( "/oauth", function( response ) {
+        console.log( response ); // server response
+    });
+    $.get( "/tooling", function( response ) {
+      toolingResp(response);
+    }); 
+});
+</script>
+</head>
+<body>
+<div id="title" class="section">
+SFDC Tooling Explorer - <a href="/oauth">re-oauth</a>
+</div>
+
+<div id="tooling-menu" class="section">Tooling Menu here</div>
+
+<div id="tooling" class="section">Raw Tooling here</div>
+
+<div id="mock-response" class="section"></div>
+
+</body></html>
