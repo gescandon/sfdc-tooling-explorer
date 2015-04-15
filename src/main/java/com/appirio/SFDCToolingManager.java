@@ -67,4 +67,27 @@ public class SFDCToolingManager {
 	          }
 	          return result;
 	    }
+	    /*
+	    public static String getTooling(String objectName, String recordName, String sessionId) throws ServletException, IOException{
+	    	String query = getQuery(objectName, recordName);
+	        HttpClient httpclient = new HttpClient();
+	        GetMethod get = new GetMethod(query);
+	        
+	        get.setRequestHeader("Authorization", "Bearer " + sessionId);
+	        get.setRequestHeader("Content-Type", "application/json");
+	        String result = "No result";
+
+	          try {
+	              httpclient.executeMethod(get);
+	              result = get.getResponseBodyAsString();
+	          } catch (HttpException e) {
+	              e.printStackTrace();
+	              throw new ServletException(e);
+	          }
+	          finally {
+	              get.releaseConnection();
+	          }
+	          return result;
+	    }
+	    */
 }

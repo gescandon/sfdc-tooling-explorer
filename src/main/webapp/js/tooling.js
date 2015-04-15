@@ -79,9 +79,10 @@ function getTooling(objectName,recordName) {
 }
 
 function explore() {
-    var explorePath = $('#tool-path').val();
-    
-  $.get( '/tooling/' + explorePath, function( response ) {
+    var reqtype = $('#request-type').val();
+    var reqvar =  $('#request-var').val();
+    var queryString = 'type='+reqtype+'&var='+reqvar;
+  $.get( '/tooling?' + queryString, function( response ) {
     if (isMock) {
          // replace response with mock data
           $("#mock-response").html("Mock response: " + response);

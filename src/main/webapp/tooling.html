@@ -21,10 +21,22 @@
 	<div id="tooling-menu" class="section">Tooling Explorer</div>
 	<p>- ex. sobjects/ApexClass</p>
 	<p>- ex. Select Id from ApexPage</p>
+	<select id="request-type">
+		<option value="completions">/completions?type=</option>
+		<option value="executeAnonymous">/executeAnonymous/?anonymousBody=</option>
+		<option value="query">/query/?q=</option>
+		<option value="runTestsAsynchronous">/runTestsAsynchronous/?classids=</option>
+		<option value="runTestsAsynchronous">/runTestsSynchronous/?classnames=</option>
+		<option value="sobjects">/sobjects/</option>
+		<option value="sobjects">/sobjects/<SObjectName>/</option>
+		<option value="sobjects">/sobjects/<SObjectName>/describe/</option>
+		<option value="sobjects/SObjectName">/sobjects/SObjectName/<id>/</option>
+		<option value="sobjects/ApexLog">/sobjects/ApexLog/<id>/Body/</option>
+	</select>
+	<span style="display:inline;">Request Var: <input type="text" id="request-var" style="width:500px;" value="sobjects/ApexClass"/></span>
 	
-	<span style="display:inline;">/tooling/<input type="text" id="tool-path" style="width:500px;" value="sobjects/ApexClass"/></span>
-	
-	<div id="submit-link" class="menu-link" onclick="explore()">Submit</div>
+	<input type="button" id="submit-link" onclick="explore()">Submit</input>
+	<div id="request-url"></div>
 	
 </div>
 <div id="infovis-container">

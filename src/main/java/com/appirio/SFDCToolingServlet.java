@@ -19,22 +19,43 @@ import java.net.URLEncoder;
 public class SFDCToolingServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String objectName = request.getParameter("objectName");
-    String recordName = request.getParameter("recordName");
-    String explorePath = request.getParameter("explorePath");
-    String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
+      //String objectName = request.getParameter("objectName");
+      //String recordName = request.getParameter("recordName");
+      //String explorePath = request.getParameter("explorePath");
+      String qtype = request.getParameter("type");
+      String qvar = request.getParameter("var");
+      String turl = getToolingUrl(qtype, qvar);
+
+
+      String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
      
       
       String result = "no results";
-      if (explorePath != null) {
-          result = SFDCToolingManager.explore(explorePath, sessionId);
-    	  
-      } else {
-        result = SFDCToolingManager.getTooling(objectName, recordName, sessionId);
-      }
+      result = SFDCToolingManager.explore(turl, sessionId);
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       out.println(result);
       out.close();
+    }
+
+    protected String getToolingUrl(String type, String var) {
+      String turl = "";
+      if("completions".equals(type)){
+      }
+      if("executeAnonymous".equals(type)){
+      }
+      if("query".equals(type)){
+        turl = type + "/?q=" + var;
+      }
+      if("runTestsAsynchronous".equals(type)){
+      }
+      if("sobjects".equals(type)){
+        turl = type + "/" + var;
+      }
+      if("sobjects/SObjectName".equals(type)){
+      }
+      if("sobjects/ApexLog".equals(type)){
+      }
+      return turl;
     }
 }
