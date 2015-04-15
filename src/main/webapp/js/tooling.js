@@ -1,7 +1,9 @@
 var isMock = false;
+/*
 if (window.location.hostname.indexOf('localhost') > -1) {
   isMock = true;
 }
+*/
 
 function map(fn, a)
     {
