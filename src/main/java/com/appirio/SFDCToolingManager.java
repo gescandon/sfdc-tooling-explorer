@@ -11,7 +11,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 public class SFDCToolingManager {
 	  
 		public static String endpoint = "https://na12.salesforce.com";
-		public static String hostname = endpoint + "/services/data/v30.0/tooling";
+		public static String hostname = endpoint + "/services/data/v32.0/tooling";
 
 	    public static String getQuery(String objectName, String recordName) {
 	    	System.out.println(objectName + " " + recordName);
