@@ -81,7 +81,8 @@ function getTooling(objectName,recordName) {
 function explore() {
     var reqtype = $('#request-type').val();
     var reqvar =  $('#request-var').val();
-    var queryString = 'type='+reqtype+'&var='+reqvar;
+    var queryString = encodeURIComponent('type='+reqtype+'&var='+reqvar);
+    console.log('*** tooling querystring: ' + queryString);
   $.get( '/tooling?' + queryString, function( response ) {
     if (isMock) {
          // replace response with mock data
