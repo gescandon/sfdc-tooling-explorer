@@ -81,7 +81,7 @@ function getTooling(objectName,recordName) {
 function explore() {
     var explorePath = $('#tool-path').val();
     
-  $.get( '/tooling?explorePath=' + explorePath, function( response ) {
+  $.get( '/tooling/' + explorePath, function( response ) {
     if (isMock) {
          // replace response with mock data
           $("#mock-response").html("Mock response: " + response);
