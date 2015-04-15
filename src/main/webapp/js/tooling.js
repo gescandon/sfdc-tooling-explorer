@@ -80,7 +80,11 @@ function getTooling(objectName,recordName) {
 
 function explore() {
     var reqtype = $('#request-type').val();
-    var reqvar =  encodeURIComponent($('#request-var').val());
+    var reqvar =  $('#request-var').val();
+    console.log('*** reqvar:   ' + reqvar);
+    reqvar = reqvar.replace(' ','+');
+    console.log('*** reqvar replaced:   ' + reqvar);
+    
     var queryString = 'type='+reqtype+'&var='+reqvar;
     console.log('*** tooling querystring: ' + queryString);
   $.get( '/tooling?' + queryString, function( response ) {
