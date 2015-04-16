@@ -22,6 +22,10 @@
   <servlet>
       <servlet-name>tooling</servlet-name>
       <servlet-class>com.appirio.SFDCToolingServlet</servlet-class>
+      <init-param>
+        <param-name>toolingApiUrl</param-name>
+        <param-value>/services/data/v32.0/tooling</param-value>
+      </init-param>           
   </servlet>
   <servlet>
       <servlet-name>oauthorize</servlet-name>
@@ -40,8 +44,8 @@
       </init-param>
       <init-param>
           <param-name>environment</param-name>
-          <param-value>https://na12.salesforce.com</param-value>
-      </init-param>      
+          <param-value>https://test.salesforce.com</param-value>
+      </init-param> 
   </servlet>
   
   <servlet-mapping>

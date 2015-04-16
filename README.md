@@ -14,3 +14,8 @@ How to build locally (using mock json responses)
 3. > java -cp target/classes/:"target/dependency/*" Hello
 4. Open browser to http://localhost:5000
 
+SFDC oAuth endpoints:
+For authorization: https://login.salesforce.com/services/oauth2/authorize
+For token requests: https://login.salesforce.com/services/oauth2/token
+For revoking OAuth tokens: https://login.salesforce.com/services/oauth2/revoke
+

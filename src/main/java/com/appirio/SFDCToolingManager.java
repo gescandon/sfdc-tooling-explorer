@@ -9,25 +9,22 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 public class SFDCToolingManager {
-	  
-		public static String endpoint = "https://na12.salesforce.com";
-		public static String hostname = endpoint + "/services/data/v32.0/tooling";
 
+/*
 	    public static String getQuery(String objectName, String recordName) {
 	    	System.out.println(objectName + " " + recordName);
 	    	String objectQuery = "Select+id,Name+from+";
 	        String query = objectName == null ? "" : objectQuery + objectName;
 	        query += recordName == null ? "" : "+where+Name+=+'" + recordName + "'";
-	        query = hostname + ("".equals(query) ? "/sobjects": "/query?q=" + query);
+	        query =  ("".equals(query) ? "/sobjects": "/query?q=" + query);
 	        System.out.println(query);
 	        return query;
 	    }
-	    
-	    public static String explore(String explorePath, String sessionId) throws ServletException, IOException{
-	    	String query = hostname + "/" + explorePath;
-	    	System.out.println("*** explore query : " + query);
+*/	    
+	    public static String explore(String toolingUrl, String sessionId) throws ServletException, IOException{
+	    	System.out.println("*** explore query : " + toolingUrl);
 	        HttpClient httpclient = new HttpClient();
-	        GetMethod get = new GetMethod(query.replaceAll(" ", "+"));
+	        GetMethod get = new GetMethod(toolingUrl.replaceAll(" ", "+"));
 	        
 	        get.setRequestHeader("Authorization", "Bearer " + sessionId);
 	        get.setRequestHeader("Content-Type", "application/json");
@@ -45,8 +42,8 @@ public class SFDCToolingManager {
 	          }
 	          return result;
 	    }
-	    
-	    public static String getTooling(String objectName, String recordName, String sessionId) throws ServletException, IOException{
+	    /*
+	    public static String getTooling(String objectName, String recordName, String sessionId, String url) throws ServletException, IOException{
 	    	String query = getQuery(objectName, recordName);
 	        HttpClient httpclient = new HttpClient();
 	        GetMethod get = new GetMethod(query);
@@ -67,4 +64,5 @@ public class SFDCToolingManager {
 	          }
 	          return result;
 	    }
+	    */
 }

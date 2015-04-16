@@ -17,21 +17,23 @@ import java.net.URLEncoder;
 
 
 public class SFDCToolingServlet extends HttpServlet {
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //String objectName = request.getParameter("objectName");
       //String recordName = request.getParameter("recordName");
       //String explorePath = request.getParameter("explorePath");
       String qtype = request.getParameter("type");
       String qvar = request.getParameter("var");
-      String turl = getToolingUrl(qtype, qvar);
 
 
       String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
-     
+      String toolingUrl = (String) request.getSession().getAttribute(OAuthServlet.INSTANCE_URL);
+      toolingUrl += this.getInitParameter("toolingApiURL");
+      toolingUrl += getToolingUrl(qtype, qvar);
+
       
       String result = "no results";
-      result = SFDCToolingManager.explore(turl, sessionId);
+      result = SFDCToolingManager.explore(toolingUrl, sessionId);
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       out.println(result);

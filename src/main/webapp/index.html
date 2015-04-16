@@ -1,13 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SFDC Tooling Explorer - Who touched the Code!</title>
+
+    <!-- Bootstrap -->
+    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="/js/sfdcMock.js"></script>
   <script src="/js/tooling.js"></script>
   <link rel="stylesheet" type="text/css" href="css/cd.css">
   <script>
-  
+  /*
   $( document ).ready(function() {
     $.get( "/oauth", function( response ) {
         console.log( response ); // server response
@@ -15,21 +24,25 @@
     $.get( "/tooling", function( response ) {
       toolingResp(response);
     }); 
-});
+*/
+    function requestSfdcAuth() {
+      window.location = "/oauth";
+    }
 </script>
 </head>
 <body>
+<div id="container">
 <div id="title" class="section">
-SFDC Tooling Explorer - <a href="/oauth">re-oauth</a>
+SFDC Tooling Explorer - Who touched the Code!
 </div>
 
-<div>Tooling Menu</div>
-<div id="tooling-menu" class="section">Tooling Menu here</div>
+<div>#1 Login into your sandobx</div>
+<div style="button" onclick="requestSfdcAuth();">Login to SFDC</div>
 
-<div>Raw Response</div>
+<div>#2 View your data: metadata type sorted by lastmodified</div>
 <div id="tooling" class="section">Raw Tooling here</div>
 
 <div>Mock Response</div>
 <div id="mock-response" class="section"></div>
-
+</div>
 </body></html>

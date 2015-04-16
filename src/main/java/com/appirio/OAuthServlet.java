@@ -68,17 +68,19 @@ public class OAuthServlet extends HttpServlet {
         environment = this.getInitParameter("environment");    // https://login.salesforce.com
 
         try {
+            // set url for authorizing request
             authUrl = environment
-                    + "/services/oauth2/authorize?response_type=code&client_id="
-                    + clientId + "&redirect_uri="
-                    + URLEncoder.encode(redirectUri, "UTF-8");
+                    + "/services/oauth2/authorize?response_type=code"
+                    + "&client_id=" + clientId 
+                    + "&redirect_uri=" + URLEncoder.encode(redirectUri, "UTF-8");
 
-            // Nots: &scope=email,read_chatter,... would be added here for oauth scope
+            // Notes: &scope=email,read_chatter,... would be added here for oauth scope
 
         } catch (UnsupportedEncodingException e) {
             throw new ServletException(e);
         }
 
+        // set url for requesting token
         tokenUrl = environment + "/services/oauth2/token";
     }
 
@@ -86,7 +88,7 @@ public class OAuthServlet extends HttpServlet {
 
         //System.out.println("Begin OAuth");
         String result = "Checking access";
-
+        
         String accessToken = (String) request.getSession().getAttribute(ACCESS_TOKEN);
         if (accessToken == null) {
 
@@ -147,8 +149,13 @@ public class OAuthServlet extends HttpServlet {
             // in the session too
             request.getSession().setAttribute(INSTANCE_URL, instanceUrl);
         }
+        
+        // TODO forward to tooling page!!!!!!
+        
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println(result + ": Authorized<p><a href=\"/\">HOME</a> - <a href=\"/tooling.html\">TOOLING</a></p>");
-        out.close();    }
+        out.close();    
+        
+    }
 }
