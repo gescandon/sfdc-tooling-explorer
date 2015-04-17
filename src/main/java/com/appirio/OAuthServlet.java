@@ -88,7 +88,7 @@ public class OAuthServlet extends HttpServlet {
 
         //System.out.println("Begin OAuth");
         String result = "Checking access";
-        
+        JSONObject authResponse = new JSONObject();
         String accessToken = (String) request.getSession().getAttribute(ACCESS_TOKEN);
         if (accessToken == null) {
 
@@ -116,7 +116,7 @@ public class OAuthServlet extends HttpServlet {
                     httpclient.executeMethod(post);
 
                     try {
-                        JSONObject authResponse = new JSONObject(
+                        authResponse = new JSONObject(
                                 new JSONTokener(new InputStreamReader(
                                         post.getResponseBodyAsStream())));
                         System.out.println("xAuth response: "
@@ -129,6 +129,7 @@ public class OAuthServlet extends HttpServlet {
                         result += ": Got access token";
                         //System.out.println(result);
                     } catch (JSONException e) {
+                        System.out.println("Something failed: " + authResponse.toString());
                         e.printStackTrace();
                         throw new ServletException(e);
                     }
