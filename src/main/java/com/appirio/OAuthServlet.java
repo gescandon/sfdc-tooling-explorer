@@ -156,7 +156,7 @@ public class OAuthServlet extends HttpServlet {
         
         //response.sendRedirect("/tooling.html");    
         PrintWriter out = response.getWriter();
-      out.println('where do we go now');
+      out.println("where do we go now");
       out.close();
     }
 }

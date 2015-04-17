@@ -30,7 +30,7 @@ public class SFDCToolingServlet extends HttpServlet {
       String toolingUrl = (String) request.getSession().getAttribute(OAuthServlet.INSTANCE_URL);
       if (sessionId == null) {
         // you are not authenticated
-        response.redirect("/");
+        response.sendRedirect("/");
         return;
       }
       
