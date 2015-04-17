@@ -16,15 +16,6 @@
   <script src="/js/tooling.js"></script>
   <link rel="stylesheet" type="text/css" href="css/cd.css">
   <script>
-  /*
-  $( document ).ready(function() {
-    $.get( "/oauth", function( response ) {
-        console.log( response ); // server response
-    });
-    $.get( "/tooling", function( response ) {
-      toolingResp(response);
-    }); 
-*/
     function requestSfdcAuth() {
       window.location = "/oauth";
     }
@@ -33,11 +24,9 @@
 <body>
     <div id="container">
       <div class="col-md-12">
-        <div id="title" class="section">
-        SFDC Tooling Explorer - Who touched the Code!
-        </div>
+        <h1>SFDC Tooling Explorer - Who touched the Code!</h1>
 
-        <div>#1 Login into your sandobx</div>
+        <h2>#1 Login into your sandobx</h2>
         <button type="button" class="btn btn-lg btn-default" onclick="requestSfdcAuth();">Login to SFDC</button>
 
         <div>#2 View your data: metadata type sorted by lastmodified</div>

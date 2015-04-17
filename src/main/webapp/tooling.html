@@ -1,40 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SFDC Tooling Explorer - Who touched the Code!</title>
+
+    <!-- Bootstrap -->
+    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <script language="javascript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/js/sfdcMock.js"></script>
-  <script language="javascript" type="text/javascript" src="/js/tooling.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/cd.css">
-  <link type="text/css" href="/css/base.css" rel="stylesheet" />
-  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/js/sfdcMock.js"></script>
+  <script src="/js/tooling.js"></script>
+  <script>
+  $( document ).ready(function() {
+    $.get( "/tooling?type=sobjects&var=ApexClass", function( response ) {
+      toolingResp(response);
+    }); 
+
+    </script>
 </head>
 <body>
-<div id="header">
-	<div id="title" class="section">
-	SFDC Tooling Explorer - Who touched the Code!
+<div id="container">
+	<div class="col-md-12">
+			<h1>SFDC Tooling Explorer - Who touched the Code!</h1>
 	</div>
-	
-	<div id="tooling-menu" class="section">Tooling Explorer</div>
-	<p>- ex. sobjects/ApexClass</p>
-	<p>- ex. Select Id from ApexPage</p>
-	<select id="request-type">
-		<option value="completions">/completions?type=</option>
-		<option value="executeAnonymous">/executeAnonymous/?anonymousBody=</option>
-		<option value="query">/query/?q=</option>
-		<option value="runTestsAsynchronous">/runTestsAsynchronous/?classids=</option>
-		<option value="runTestsAsynchronous">/runTestsSynchronous/?classnames=</option>
-		<option value="sobjects">/sobjects/</option>
-		<option value="sobjects">/sobjects/<SObjectName>/</option>
-		<option value="sobjects">/sobjects/<SObjectName>/describe/</option>
-		<option value="sobjects/SObjectName">/sobjects/SObjectName/<id>/</option>
-		<option value="sobjects/ApexLog">/sobjects/ApexLog/<id>/Body/</option>
-	</select>
-	<span style="display:inline;">Request Var: <input type="text" id="request-var" style="width:500px;" value="sobjects/ApexClass"/></span>
-	
-	<input type="button" id="submit-link" onclick="explore()">Submit</input>
-	<div id="request-url"></div>
-	
+	<div class="col-md-4">
+		<input type="hidden" id="request-type" value="sobjects">
+		<h2>sobjects</h2>
+	</div>
+	<div class="col-md-4"></div>
+		<select id="request-var" onchange="explore()">
+			<option value="ApexClass">ApexClass</option>
+			<option value="ApexPage">ApexPage</option>
+		</select>
+	</div>
+	<div class="col-md-4">
+		<div id="request-url"></div>
+	</div>	
 </div>
     <div id="explore-out" class="section"></div>
     

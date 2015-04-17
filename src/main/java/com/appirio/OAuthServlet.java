@@ -153,7 +153,7 @@ public class OAuthServlet extends HttpServlet {
         
         // TODO forward to tooling page!!!!!!
         
-        response.sendRedirect("/tooling");    
+        response.sendRedirect("/tooling.html");    
         
     }
 }
