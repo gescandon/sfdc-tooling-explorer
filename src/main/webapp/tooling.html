@@ -15,29 +15,29 @@
   <script src="/js/sfdcMock.js"></script>
   <script src="/js/tooling.js"></script>
   <script>
-  $( document ).ready(function() {
-    $.get( "/tooling?type=sobjects&var=ApexClass", function( response ) {
-      toolingResp(response);
-    }); 
-
-    </script>
+	$( document ).ready(function() {
+		$.get( "/tooling?type=sobjects&var=ApexClass", function( response ) {
+		  toolingResp(response);
+		}); 
+	}
+	</script>
 </head>
 <body>
 <div id="container">
 	<div class="col-md-12">
 			<h1>SFDC Tooling Explorer - Who touched the Code!</h1>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-2">
 		<input type="hidden" id="request-type" value="sobjects">
-		<h2>sobjects</h2>
+		<h3>sobjects</h3>
 	</div>
-	<div class="col-md-4"></div>
+	<div class="col-md-2"></div>
 		<select id="request-var" onchange="explore()">
 			<option value="ApexClass">ApexClass</option>
 			<option value="ApexPage">ApexPage</option>
 		</select>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-8">
 		<div id="request-url"></div>
 	</div>	
 </div>
