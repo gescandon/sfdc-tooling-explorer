@@ -96,6 +96,7 @@ public class OAuthServlet extends HttpServlet {
             result += ": Getting new token";
             if (request.getRequestURI().endsWith("oauth")) {
                 // we need to send the user to authorize
+                System.out.println("send redirect w/ authUrl: " + authUrl);
                 response.sendRedirect(authUrl);
                 return;
             } else {
@@ -127,7 +128,7 @@ public class OAuthServlet extends HttpServlet {
                         // Instance URL is Salesforce specific.
                         instanceUrl = authResponse.getString("instance_url");
                         result += ": Got access token";
-                        //System.out.println(result);
+                        System.out.println(result);
                     } catch (JSONException e) {
                         System.out.println("Something failed: " + authResponse.toString());
                         e.printStackTrace();
@@ -153,7 +154,9 @@ public class OAuthServlet extends HttpServlet {
         
         // TODO forward to tooling page!!!!!!
         
-        response.sendRedirect("/tooling.html");    
-        
+        //response.sendRedirect("/tooling.html");    
+        PrintWriter out = response.getWriter();
+      out.println('where do we go now');
+      out.close();
     }
 }

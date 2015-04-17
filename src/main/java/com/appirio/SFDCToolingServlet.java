@@ -26,8 +26,14 @@ public class SFDCToolingServlet extends HttpServlet {
       String qvar = request.getParameter("var");
 
 
-      String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);;
+      String sessionId = (String) request.getSession().getAttribute(OAuthServlet.ACCESS_TOKEN);
       String toolingUrl = (String) request.getSession().getAttribute(OAuthServlet.INSTANCE_URL);
+      if (sessionId == null) {
+        // you are not authenticated
+        response.redirect("/");
+        return;
+      }
+      
       toolingUrl += this.getInitParameter("toolingApiURL");
       toolingUrl += getToolingUrl(qtype, qvar);
 
