@@ -34,7 +34,7 @@ public class SFDCToolingServlet extends HttpServlet {
         return;
       }
       
-      toolingUrl += this.getInitParameter("toolingApiURL");
+      toolingUrl += this.getInitParameter("toolingApiUrl");
       toolingUrl += getToolingUrl(qtype, qvar);
 
       
