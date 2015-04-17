@@ -33,9 +33,9 @@ public class SFDCToolingServlet extends HttpServlet {
         response.sendRedirect("/");
         return;
       }
-      
+
       toolingUrl += this.getInitParameter("toolingApiUrl");
-      toolingUrl += getToolingUrl(qtype, qvar);
+      toolingUrl += "/" + getToolingUrl(qtype, qvar);
 
       
       String result = "no results";
