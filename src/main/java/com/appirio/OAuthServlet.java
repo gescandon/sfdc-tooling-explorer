@@ -73,7 +73,8 @@ public class OAuthServlet extends HttpServlet {
                     + "/services/oauth2/authorize?response_type=code"
                     + "&client_id=" + clientId 
                     + "&redirect_uri=" + URLEncoder.encode(redirectUri, "UTF-8")
-                    + "&scope=api";
+                    + "&scope=api"
+                    + "&immediate=true";
 
             // Notes: &scope=email,read_chatter,... would be added here for oauth scope
 
