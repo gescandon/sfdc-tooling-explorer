@@ -152,12 +152,7 @@ public class OAuthServlet extends HttpServlet {
             // in the session too
             request.getSession().setAttribute(INSTANCE_URL, instanceUrl);
         }
-        
-        // TODO forward to tooling page!!!!!!
-        
-        //response.sendRedirect("/tooling.html");    
-        PrintWriter out = response.getWriter();
-      out.println("where do we go now");
-      out.close();
+                
+        response.sendRedirect("/tooling.html");    
     }
 }
