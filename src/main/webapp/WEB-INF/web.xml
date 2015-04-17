@@ -40,7 +40,7 @@
       </init-param>      
       <init-param>
           <param-name>redirectUri</param-name>
-          <param-value>https://sfdc-tooling-14-app.herokuapp.com//sfdc_callback</param-value>
+          <param-value>https://sfdc-tooling-14-app.herokuapp.com/sfdc_callback</param-value>
       </init-param>
       <init-param>
           <param-name>environment</param-name>
