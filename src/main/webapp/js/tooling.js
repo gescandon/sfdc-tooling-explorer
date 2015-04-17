@@ -14,13 +14,23 @@ function map(fn, a)
     }
 
 
-function reduce(fn, a, init)
+/*function reduce(fn, a, init)
     {
         var s = init;
         for (i = 0; i < a.length; i++)
             s = fn( s, a[i] );
         return s;
     }
+*/
+
+  function reduce(fn, a, init)
+      {
+          var s = init;
+          for (i = a.length - 1; i >= 0  ; i--)
+              s = fn( s, a[i] );
+          return s;
+      }
+
 
 function toolingResp(response, objectName) {
   if (isMock) {
@@ -60,8 +70,28 @@ function loadMenu(response) {
 function loadTools(response, objectName) {
     var rObj = $.parseJSON(response);
     var records = rObj.records;
+
+  records.sort(function(a, b){
+      var keyA = new Date(a.LastModifiedDate),
+      keyB = new Date(b.LastModifiedDate);
+      // Compare the 2 dates
+      if(keyA < keyB) return -1;
+      if(keyA > keyB) return 1;
+      return 0;
+  });
+
+    var sortedTools = records.sort();
+    var toolingTableHeader = "<table class='table'><thead><tr><td>LastModifiedDate</td><td>Name</td><td>LastModifiedById</td></tr></thead>";
+    var toolsHtml = reduce(function(s, x) {
+      return s + "<tr><td>" + sortedTools[i].LastModifiedDate + "</td><td>" + sortedTools[i].Name + "</td><td>" + sortedTools[i].LastModifiedById + "</td></tr>";},
+      sortedTools,
+      toolingTableHeader);
+    return toolsHtml + "</table>";
+
+/*
     return reduce (function(s, x){
       return s + "<li><div class=\"menu-link\" onclick=\"getTooling(\'" + x.attributes.type + "\',\'" + x.Name + "\')\">" + x.Name  + "</div></li>";}, records, "<ul>") + "</ul>";
+ */
   }
 
 function getTooling(objectName,recordName) {

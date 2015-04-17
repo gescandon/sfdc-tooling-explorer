@@ -18,6 +18,9 @@ import java.net.URLEncoder;
 
 public class SFDCToolingServlet extends HttpServlet {
 
+    String APEXCLASS_QUERY = "/q=select+id,+Name,+lastmodifiedbyid,+lastmodifieddate,+from+ApexClass";
+    String APEXCODECOVERAGE_QUERY = "/q=select+id,+coverage,+NumLinesCovered,+NumLinesUncovered,+ApexTestClassId,+lastmodifiedbyid,+lastmodifieddate,+ApexClassOrTriggerId+from+ApexCodeCoverage";
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //String objectName = request.getParameter("objectName");
       //String recordName = request.getParameter("recordName");
@@ -48,12 +51,18 @@ public class SFDCToolingServlet extends HttpServlet {
 
     protected String getToolingUrl(String type, String var) {
       String turl = "";
-      if("query".equals(type)){
-        turl = type + "/?q=select+id,+name,+lastmodifiedbyid,+lastmodifieddate from " + var;
+      if ("query".equals(type)) {
+        if ("ApexCodeCoverage".equals(type)) {
+          turl = type + APEXCLASS_QUERY;          
+        } else {
+          // default apex class query
+          turl = type + APEXCLASS_QUERY;          
+        }
       }
       if("sobjects".equals(type)){
         turl = type + "/" + var;
       }
+
       /*
       if("completions".equals(type)){
       }
