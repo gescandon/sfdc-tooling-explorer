@@ -20,6 +20,7 @@ public class SFDCToolingServlet extends HttpServlet {
 
     String APEXCLASS_QUERY = "/q=select+id,+Name,+lastmodifiedbyid,+lastmodifieddate,+from+ApexClass";
     String APEXCODECOVERAGE_QUERY = "/q=select+id,+coverage,+NumLinesCovered,+NumLinesUncovered,+ApexTestClassId,+lastmodifiedbyid,+lastmodifieddate,+ApexClassOrTriggerId+from+ApexCodeCoverage";
+    String USER_QUERY = "/q=select+id,+Name,+lastmodifiedbyid,+lastmodifieddate,+from+ApexClass";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       //String objectName = request.getParameter("objectName");
