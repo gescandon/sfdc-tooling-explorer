@@ -153,10 +153,7 @@ public class OAuthServlet extends HttpServlet {
         
         // TODO forward to tooling page!!!!!!
         
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println(result + ": Authorized<p><a href=\"/\">HOME</a> - <a href=\"/tooling.html\">TOOLING</a></p>");
-        out.close();    
+        response.sendRedirect("/tooling");    
         
     }
 }
