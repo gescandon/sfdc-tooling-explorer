@@ -48,22 +48,26 @@ public class SFDCToolingServlet extends HttpServlet {
 
     protected String getToolingUrl(String type, String var) {
       String turl = "";
-      if("completions".equals(type)){
-      }
-      if("executeAnonymous".equals(type)){
-      }
       if("query".equals(type)){
-        turl = type + "/?q=" + var;
-      }
-      if("runTestsAsynchronous".equals(type)){
+        turl = type + "/?q=select+id,+name,+lastmodifiedbyid,+lastmodifieddate from " + var;
       }
       if("sobjects".equals(type)){
         turl = type + "/" + var;
       }
+      /*
+      if("completions".equals(type)){
+      }
+      if("executeAnonymous".equals(type)){
+      if("runTestsAsynchronous".equals(type)){
+      }
+      }
+      */
+      /*
       if("sobjects/SObjectName".equals(type)){
       }
       if("sobjects/ApexLog".equals(type)){
       }
+      */
       return turl;
     }
 }
