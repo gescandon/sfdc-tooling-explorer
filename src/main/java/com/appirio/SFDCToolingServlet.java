@@ -18,7 +18,7 @@ import java.net.URLEncoder;
 
 public class SFDCToolingServlet extends HttpServlet {
 
-    String APEXCLASS_QUERY = "/q=select+id,+Name,+lastmodifiedbyid,+lastmodifieddate,+from+ApexClass";
+    String APEXCLASS_QUERY = "/q=select+id,+Name,+lastmodifiedbyid,+lastmodifieddate+from+ApexClass";
     String APEXCODECOVERAGE_QUERY = "/q=select+id,+coverage,+NumLinesCovered,+NumLinesUncovered,+ApexTestClassId,+lastmodifiedbyid,+lastmodifieddate,+ApexClassOrTriggerId+from+ApexCodeCoverage";
     String USER_QUERY = "/q=select+id,+Name,+lastmodifiedbyid,+lastmodifieddate,+from+ApexClass";
 

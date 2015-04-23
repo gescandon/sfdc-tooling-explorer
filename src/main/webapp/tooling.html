@@ -58,7 +58,7 @@
 	function loadCollection() {
 		var datatype = $("#datatype").val();
 		var mycollection;
-		var query = "/tooling?type=query&var=" + $("datatype").val();
+		var query = "/tooling?type=query&var=" + datatype;
 		var desc = $.get(query, function( response ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
