@@ -78,35 +78,44 @@
 				});
 
 			mycollection.sort();
+
 			var toolsHtml = reduce(function(s, x) {
 			return s + "<tr><td>" + mycollection[i].LastModifiedDate + "</td><td>" + mycollection[i].Name + "</td><td>" + mycollection[i].LastModifiedById + "</td></tr>";},
 			mycollection,
 			"<table class='table'><thead><tr><td>LastModifiedDate</td><td>Name</td><td>LastModifiedById</td></tr></thead>");
+			
+			$("#madlib").html(toolsHtml + "</table>");	
 		}
 
 		if (datatype == 'ApexCodeCoverage') {
 			console.log('ApexCodeCoverage');
 			console.log(mycollection.length);
+
 			var toolsHtml = reduce(function(s, x) {
 			var totalLines = mycollection[i].NumLinesCovered + mycollection[i].NumLinesUncovered;
 			var percentCoverage = Math.round(100 * (mycollection[i].NumLinesCovered / totalLines));
 			return s + "<tr><td>" + mycollection[i].Id + "</td><td>" + mycollection[i].ApexClassOrTriggerId + "</td><td>" + totalLines + "</td><td>" + percentCoverage + "</td><td>" + mycollection[i].LastModifiedDate + "</td></tr>";},
 			mycollection,
 			"<table class='table'><thead><tr><td>Id</td><td>ApexClassOrTriggerId</td><td>Line Count</td><td>Coverage</td><td>LastModifiedById</td></tr></thead>");		
+
+			$("#madlib").html(toolsHtml + "</table>");	
 		}
 
 		if (datatype == 'User') {
 			console.log('ApexCodeCoverage');
 			console.log(mycollection.length);
+
 			var toolsHtml = reduce(function(s, x) {
 			return s + "<tr><td>" + mycollection[i].Name + "</td><td>" + mycollection[i].Username + "</td><td>" + mycollection[i].Id + "</td></tr>";},
 			mycollection,
-			"<table class='table'><thead><tr><td>Name</td><td>Username</td><td>Id</td></tr></thead>");		
+			"<table class='table'><thead><tr><td>Name</td><td>Username</td><td>Id</td></tr></thead>");	
+
+			$("#madlib").html(toolsHtml + "</table>");	
+
 		}
 		});
 
 		
-		$("#madlib").html(toolsHtml + "</table>");	
 	}
 	
 	$( document ).ready(function() {
