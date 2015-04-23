@@ -20,6 +20,14 @@
       <servlet-class>com.appirio.PullRequestServlet</servlet-class>
   </servlet>
   <servlet>
+      <servlet-name>explain</servlet-name>
+      <servlet-class>com.appirio.SFDCExplainServlet</servlet-class>
+      <init-param>
+        <param-name>explainApiUrl</param-name>
+        <param-value>/services/data/v32.0</param-value>
+      </init-param>           
+  </servlet>
+  <servlet>
       <servlet-name>tooling</servlet-name>
       <servlet-class>com.appirio.SFDCToolingServlet</servlet-class>
       <init-param>
