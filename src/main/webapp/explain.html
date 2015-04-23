@@ -37,7 +37,7 @@
 		query = query.replace(/\s/g,"+").replace(/\'/g,"\'");
 		console.log("explain query: " + query);
 		var url = "/explain?q=" + query;
-		var desc = $.get(query, function( response ) {
+		var desc = $.get(url, function( response ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
 			$("#madlib").html('<pre>' + JSON.stringify(desc,null,2) + '</pre>');
