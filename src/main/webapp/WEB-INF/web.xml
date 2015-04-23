@@ -57,8 +57,8 @@
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>bitbucket</servlet-name>
-    <url-pattern>/bitbucket</url-pattern>
+    <servlet-name>explain</servlet-name>
+    <url-pattern>/explain</url-pattern>
   </servlet-mapping> 
   <servlet-mapping>
     <servlet-name>oauthorize</servlet-name>
