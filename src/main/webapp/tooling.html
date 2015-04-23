@@ -62,7 +62,7 @@
 		var desc = $.get(query, function( response ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
-			mycollection = response.records;
+			mycollection = desc.records;
 		});
 
 		if (datatype == 'ApexClass') {
