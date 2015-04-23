@@ -46,10 +46,10 @@
 	function loadDescription() {
 		var query = "/tooling?type=sobjects&var=" + $("datatype").val();
 		console.log("tooling query: " + query);
-		var desc = $.get(query, function( response ) {
+		$.get(query, function( data ) {
 			console.log("# DESCRIBE RESULT");
-			console.log(desc);
-			$("#madlib").html('<pre>' + JSON.stringify(desc,null,2) + '</pre>');
+			console.log(data);
+			$("#madlib").html('<pre>' + JSON.stringify(data,null,2) + '</pre>');
 		}); 
 
 
@@ -57,11 +57,12 @@
 
 	function loadCollection() {
 		var datatype = $("#datatype").val();
-		var mycollection;
+		var mycollection = {};
 		var query = "/tooling?type=query&var=" + datatype;
 		$.get(query, function( data ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(data);
+			console.log(data.size);
 			mycollection = data.records;
 		});
 
