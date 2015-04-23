@@ -57,14 +57,13 @@
 
 	function loadCollection() {
 		var datatype = $("#datatype").val();
-		var mycollection = {};
+		var mycollection = {"empty":"empty"};
 		var query = "/tooling?type=query&var=" + datatype;
 		$.getJSON(query, function( data ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(data);
 			console.log(data.size);
 			mycollection = data.records;
-		});
 
 		if (datatype == 'ApexClass') {
 			console.log('ApexClass');
@@ -104,6 +103,8 @@
 			mycollection,
 			"<table class='table'><thead><tr><td>Name</td><td>Username</td><td>Id</td></tr></thead>");		
 		}
+		});
+
 		
 		$("#madlib").html(toolsHtml + "</table>");	
 	}
