@@ -39,7 +39,7 @@ public class SFDCExplainServlet extends HttpServlet {
 
       
 
-    	System.out.println("*** explore query : " + explainUrl);
+    	System.out.println("*** explore query : " + explainUrl.replaceAll(" ", "+")..replaceAll("'", "\'"));
       HttpClient httpclient = new HttpClient();
       GetMethod get = new GetMethod(explainUrl);
       
