@@ -59,7 +59,7 @@
 		var datatype = $("#datatype").val();
 		var mycollection = {};
 		var query = "/tooling?type=query&var=" + datatype;
-		$.get(query, function( data ) {
+		$.getJSON(query, function( data ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(data);
 			console.log(data.size);
