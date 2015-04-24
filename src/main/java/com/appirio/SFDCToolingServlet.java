@@ -53,9 +53,9 @@ public class SFDCToolingServlet extends HttpServlet {
     protected String getToolingUrl(String type, String var) {
       String turl = "";
       if ("query".equals(type)) {
-        if ("ApexCodeCoverage".equals(type)) {
+        if ("ApexCodeCoverage".equals(var)) {
           turl = type + APEXCODECOVERAGE_QUERY;          
-        } else if ("User".equals(type)) {
+        } else if ("User".equals(var)) {
           turl = type + USER_QUERY;          
         } else {
           // default apex class query
