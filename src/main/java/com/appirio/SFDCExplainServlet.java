@@ -43,6 +43,7 @@ public class SFDCExplainServlet extends HttpServlet {
       GetMethod get = new GetMethod(explainUrl);
       
       get.setRequestHeader("Authorization", "Bearer " + sessionId);
+      get.setRequestHeader("X-PrettyPrint", "1");
       get.setRequestHeader("Content-Type", "application/json");
       String result = "No result";
 
