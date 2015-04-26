@@ -28,6 +28,7 @@
 	    }
 
 	function load() {
+		showSpinner();
 		console.log($("#datatype").val());
 		var idesc = $("#datatype").val().indexOf('Describe');
 		console.log(idesc);
@@ -36,6 +37,7 @@
 		} else {
 			loadCollection();
 		}
+		hideSpinner();
 	}
 
 	function loadDescription() {
@@ -134,9 +136,15 @@
 			$("#madlib").html(toolsHtml + "</table>");	
 
 		}
-		});
+		});		
+	}	
 
-		
+	function showSpinner() {
+		$("#spinner").html("Getting data...");
+		$("#madlib").html("");	
+	}
+	function hideSpinner() {
+		$("#spinner").html("");
 	}	
 	</script>
 </head>
@@ -162,6 +170,7 @@
 		 </select>
 	</div>
 	<div class="col-md-12">
+		<div id="spinner"></div>
 		<div id="madlib">This is where the story goes, and you replace_A1 goes here.</div>
 	</div>
 </div>
