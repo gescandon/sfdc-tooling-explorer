@@ -40,7 +40,7 @@
 		var desc = $.get(url, function( response ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
-			var desc = JSON.stringify(desc, replacer, 2).replace(/\n/g,"\\n");
+			var desc = JSON.stringify(desc, null, 2).replace(/\n/g,"\\n");
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
 		}); 
 
@@ -56,9 +56,14 @@
 			<h1>SFDC Query Explain</h1>
 	</div>
 
-	<div class="col-md-12">
-		<div><input id="query" style="width:400px;" value="query"></div>
+	<div class="col-md-8">
+		<div><input id="query" style="width:600px;" value="query"></div>
 		<input type="button" onclick="explain();" value="Explain"/>
+	</div>
+	<div class="col-md-4">
+		<button type="button" class="btn btn-lg btn-default" onclick="window.location = '/tooling.html';">
+			Go to Tooling
+		</button>
 	</div>
 	<div class="col-md-12" id="madlib">This is where the story goes, and you replace_A1 goes here.</div>
 </div>
