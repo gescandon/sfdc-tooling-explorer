@@ -11,8 +11,6 @@
 
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="/js/tooling.js"></script>
   <script>
 	function map(fn, a)
 	    {
@@ -41,8 +39,10 @@
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
 			var desc2 = JSON.stringify(desc,null,2);
-			//desc2 = desc2.replace(/\n/g, "\\n");
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
+			$("#madlib2").html( + desc2 + );
+			desc2 = desc2.replace(/\n/g, "\\n");
+			$("#madlib3").html( + desc2 + );
 		}); 
 
 
@@ -66,7 +66,12 @@
 			Go to Tooling
 		</button>
 	</div>
-	<div class="col-md-12" id="madlib">This is where the story goes, and you replace_A1 goes here.</div>
 </div>
+<div style="clear:both"/>
+	<div id="madlib">This is where the story goes, and you replace_A1 goes here.</div>
 	<div id="madlib2">This is where the story goes, and you replace_A1 goes here.</div>
-</body></html>
+	<div id="madlib3">This is where the story goes, and you replace_A1 goes here.</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/js/tooling.js"></script>
+</body>
+</html>
