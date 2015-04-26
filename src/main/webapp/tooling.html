@@ -91,7 +91,7 @@
 			// add row calculations 
 			mycollection = map(function(x) {
 				x.totalLines = x.NumLinesCovered + x.NumLinesUncovered;
-				x.percentCoverage = Math.round(100 * (x.NumLinesCovered / totalLines));
+				x.percentCoverage = Math.round(100 * (x.NumLinesCovered / x.totalLines));
 				return x;
 			}, mycollection);
 
