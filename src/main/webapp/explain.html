@@ -37,7 +37,7 @@
 			console.log(desc);
 			var desc2 = JSON.stringify(desc,null,2);
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
-			desc2 = desc2.replace(/\n/g, "\r");
+			desc2 = desc2.replace(/\\n/g, "\r");
 			$("#madlib3").html('<pre>' + desc2 + '</pre>');
 		}); 
 
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 </div>
-<div style="clear:both"/>
+<div style="clear:both"></div>
 <div style="margin:20px;">
 	<div id="madlib">This is where the story goes, and you replace_A1 goes here.</div>
 	<div id="madlib2">This is where the story goes, and you replace_A1 goes here.</div>
