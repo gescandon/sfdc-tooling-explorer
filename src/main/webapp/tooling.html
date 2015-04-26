@@ -97,10 +97,10 @@
 
 			// sort by code coverage
 			mycollection.sort(function(a, b){
-			    var keyA1 = new Date(a.percentCoverage),
+			    var keyA1 = new Date(a.percentCoverage);
 			    var keyB1 = new Date(b.percentCoverage);
 
-			    var keyA2 = new Date(a.totalLines),
+			    var keyA2 = new Date(a.totalLines);
 			    var keyB2 = new Date(b.totalLines);
 			    // Compare the coverage
 			    if(keyA1 < keyB1) return -1;
