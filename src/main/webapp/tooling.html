@@ -142,11 +142,16 @@
 </head>
 <body>
 <div id="container">
-	<div class="col-md-12">
+	<div class="col-md-10">
 			<h1>SFDC Tooling Explorer - Who touched the Code!</h1>
 	</div>
 		<input type="hidden" id="request-type" value="query">
-	<div class="col-md-8">
+	<div class="col-md-2">
+		<button type="button" class="btn btn-lg btn-info" onclick="window.location = '/explain.html';">
+			Go to Explain
+		</button>
+	</div>
+	<div class="col-md-12">
 		 <h2>Display a list of records from SFDC Tooling API.</h2>
 		 <select id="datatype" onchange="load();" value="ApexClass">
 		 	<option value="ApexClass">ApexClass</option>
@@ -155,11 +160,6 @@
 		 	<option value="ApexCodeCoverageDescribe">ApexCodeCoverageDescribe</option>
 		 	<option value="UserDescribe">UserDescribe</option>
 		 </select>
-	</div>
-	<div class="col-md-4">
-		<button type="button" class="btn btn-lg btn-info" onclick="window.location = '/explain.html';">
-			Go to Explain
-		</button>
 	</div>
 	<div class="col-md-12">
 		<div id="madlib">This is where the story goes, and you replace_A1 goes here.</div>
