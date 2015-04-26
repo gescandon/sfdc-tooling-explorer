@@ -40,7 +40,8 @@
 		var desc = $.get(url, function( response ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
-			var desc = JSON.stringify(desc, null, 2).replace(/\n/g,"\\n");
+			var desc2 = JSON.stringify(desc,null,2);
+			desc2 = desc2.replace(/\n/g, "\\n");
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
 		}); 
 
