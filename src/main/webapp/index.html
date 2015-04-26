@@ -8,9 +8,22 @@
 
     <!-- Bootstrap -->
     <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <div id="container">
+      <div class="col-md-12">
+        <h1>SFDC Tooling Explorer - Who touched the Code!</h1>
+      </div>
+      <div class="col-md-12">
+        <h2>Tooling: See who last modified metadata. See class code coverage.</h2>
+        <h2>Explain: See the explain plan for a soql statement.</h2>
+      </div>
+      <div class="col-md-12">
+        <h2>Step 1: Login into your sandobx</h2>
+        <button type="button" class="btn btn-lg btn-primary" onclick="requestSfdcAuth();">Login to SFDC</button>
+      </div>
+    </div>
+  </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="/js/sfdcMock.js"></script>
   <script src="/js/tooling.js"></script>
@@ -18,21 +31,6 @@
     function requestSfdcAuth() {
       window.location = "/oauth";
     }
-</script>
-</head>
-<body>
-    <div id="container">
-      <div class="col-md-12">
-        <h1>SFDC Tooling Explorer - Who touched the Code!</h1>
+  </script>
 
-        <h2>#1 Login into your sandobx</h2>
-        <button type="button" class="btn btn-lg btn-primary" onclick="requestSfdcAuth();">Login to SFDC</button>
-
-        <div>#2 View your data: metadata type sorted by lastmodified</div>
-        <div id="tooling" class="section">Raw Tooling here</div>
-
-        <div>Mock Response</div>
-        <div id="mock-response" class="section"></div>
-    </div>
-  </div>
 </body></html>

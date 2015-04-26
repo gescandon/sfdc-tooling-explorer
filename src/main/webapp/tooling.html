@@ -94,8 +94,10 @@
 			map(function(x) {
 				x.totalLines = x.NumLinesCovered + x.NumLinesUncovered;
 				x.percentCoverage = Math.round(100 * (x.NumLinesCovered / x.totalLines));
+				return x;
 			}, mycollection);
 
+			console.log('mapped collection length: ' + mycollection.length);
 			// sort by code coverage
 			mycollection.sort(function(a, b){
 			    var keyA1 = new Date(a.percentCoverage);
