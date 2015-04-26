@@ -41,7 +41,7 @@
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
 			var desc2 = JSON.stringify(desc,null,2);
-			desc2 = desc2.replace(/\n/g, "\\n");
+			//desc2 = desc2.replace(/\n/g, "\\n");
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
 		}); 
 
@@ -62,7 +62,7 @@
 		<input type="button" onclick="explain();" value="Explain"/>
 	</div>
 	<div class="col-md-4">
-		<button type="button" class="btn btn-lg btn-default" onclick="window.location = '/tooling.html';">
+		<button type="button" class="btn btn-lg btn-info" onclick="window.location = '/tooling.html';">
 			Go to Tooling
 		</button>
 	</div>
