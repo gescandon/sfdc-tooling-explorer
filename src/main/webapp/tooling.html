@@ -89,10 +89,9 @@
 			console.log(mycollection.length);
 
 			// add row calculations 
-			mycollection = map(function(x) {
+			map(function(x) {
 				x.totalLines = x.NumLinesCovered + x.NumLinesUncovered;
 				x.percentCoverage = Math.round(100 * (x.NumLinesCovered / x.totalLines));
-				return x;
 			}, mycollection);
 
 			// sort by code coverage
