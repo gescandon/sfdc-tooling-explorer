@@ -31,10 +31,6 @@
 	        return s;
 	    }
 
-	function replacer(key, value) {
-	  return value.replace(/\n/g,"\\n");
-	}
-
 	function explain() {
 
 		var query = $("#query").val();
@@ -44,7 +40,7 @@
 		var desc = $.get(url, function( response ) {
 			console.log("# DESCRIBE RESULT");
 			console.log(desc);
-			var desc = JSON.stringify(desc, replacer, 2);
+			var desc = JSON.stringify(desc, replacer, 2).replace(/\n/g,"\\n");
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
 		}); 
 
