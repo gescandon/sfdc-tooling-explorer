@@ -37,9 +37,8 @@
 			console.log(desc);
 			var desc2 = JSON.stringify(desc,null,2);
 			$("#madlib").html('<pre>' + desc2 + '</pre>');
-			$("#madlib2").html( desc2 );
-			desc2 = desc2.replace(/\n/g, "\\n");
-			$("#madlib3").html( desc2 );
+			desc2 = desc2.replace(/\n/g, "\r");
+			$("#madlib3").html('<pre>' + desc2 + '</pre>');
 		}); 
 
 
