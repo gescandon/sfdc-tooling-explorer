@@ -56,19 +56,20 @@
 			Go to Tooling
 		</button>
 	</div>
-		<div class="col-md-8">
-			<div><input id="query" style="width:600px;" value="query"></div>
-		</div>
-		<div class="col-md-4">
+	<div class="panel panel-default">
+	<div class="panel-heading">
+		<div><input id="query" style="width:600px;" value="query"></div>
 			<button type="button" onclick="explain();" class="btn btn-lg btn-primary" >
 				Explain
 			</button>
+	</div>
+	<div class="panel-body">
+		<div style="margin:20px;">
+			<div id="madlib3"></div>
 		</div>
+	</div>
 </div>
 <div style="clear:both"></div>
-<div style="margin:20px;">
-	<div id="madlib3"></div>
-</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="/js/tooling.js"></script>
 </body>
