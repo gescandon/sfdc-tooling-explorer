@@ -115,7 +115,7 @@
 			var toolsHtml = reduce(function(s, x) {
 			//var totalLines = mycollection[i].NumLinesCovered + mycollection[i].NumLinesUncovered;
 			//var percentCoverage = Math.round(100 * (mycollection[i].NumLinesCovered / totalLines));
-			return s + "<tr><td>" + x.ApexClassOrTriggerId + "</td><td>" + x.totalLines + "</td><td>" + x.percentCoverage + "</td><td>" + x.LastModifiedById + "</td></tr>";},
+			return s + "<tr><td>" + mycollection[i].ApexClassOrTriggerId + "</td><td>" + mycollection[i].totalLines + "</td><td>" + mycollection[i].percentCoverage + "</td><td>" + mycollection[i].LastModifiedById + "</td></tr>";},
 			mycollection,
 			"<table class='table'><thead><tr><td>ApexClassOrTriggerId</td><td>Line Count</td><td>Coverage</td><td>LastModifiedById</td></tr></thead>");		
 
