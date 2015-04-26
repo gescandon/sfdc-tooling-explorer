@@ -10,24 +10,21 @@
     <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="container">
-      <div class="col-md-12">
+<div id="container">
+  <div class="panel panel-default">
+  <div class="panel-heading">
         <h1>SFDC Tooling Explorer - Who touched the Code!</h1>
-      </div>
-      <div class="col-md-12">
         <div>
           <i>Tooling: See who last modified metadata. See class code coverage.</i>
         </div>
         <div>
           <i>Explain: See the explain plan for a soql statement.</i>
         </div>
-      </div>
-      <div class="col-md-12">
-        <h3>Step 1: Login into your sandbox</h2>
+        <h3>Step 1: Login into your sandbox</h3>
         <button type="button" class="btn btn-lg btn-primary" onclick="requestSfdcAuth();">Login to SFDC</button>
-      </div>
     </div>
   </div>
+</div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="/js/sfdcMock.js"></script>
   <script src="/js/tooling.js"></script>
